@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot, Loader2 } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
@@ -29,7 +28,8 @@ const ChatAssistant: React.FC = () => {
     setLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      // Use process.env.API_KEY directly as required by Vercel and Gemini SDK guidelines
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       
       const knowledgeBase = `
         PROFILE:
@@ -72,6 +72,7 @@ const ChatAssistant: React.FC = () => {
       const botText = response.text || "Connection error. Please review the Projects section for full technical details.";
       setMessages(prev => [...prev, { role: 'bot', text: botText }]);
     } catch (error) {
+      console.error("AI Error:", error);
       setMessages(prev => [...prev, { role: 'bot', text: "Assistant offline. Please reach out via the contact form for urgent inquiries." }]);
     } finally {
       setLoading(false);
