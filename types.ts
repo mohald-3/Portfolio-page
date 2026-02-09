@@ -37,5 +37,6 @@ export interface Project {
   }[];
   lessons: string[];
   githubUrl?: string;
+  repositories?: { label: string; url: string }[];
   liveUrl?: string;
 }

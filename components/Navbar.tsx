@@ -23,6 +23,7 @@ const Navbar: React.FC = () => {
     { name: 'About', href: '/#about' },
     { name: 'Skills', href: '/#skills' },
     { name: 'Projects', href: '/#projects' },
+    { name: 'Experience', href: '/#experience' },
     { name: 'Contact', href: '/#contact' },
   ];
 
@@ -51,7 +52,7 @@ const Navbar: React.FC = () => {
               <Logo className="w-8 h-8" />
             </div>
             <span className="text-sm font-bold tracking-[0.2em] text-white transition-colors duration-300 group-hover:text-purple-400 uppercase font-mono">
-              MOHANNED
+              MOHANAD
             </span>
           </Link>
 

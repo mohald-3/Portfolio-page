@@ -9,13 +9,13 @@ const Footer: React.FC = () => {
           <div className="w-8 h-8 flex items-center justify-center">
             <Logo className="w-full h-full opacity-80" />
           </div>
-          <span className="text-sm font-mono text-zinc-500">&copy; {new Date().getFullYear()} Mohanned. Engineering Excellence.</span>
+          <span className="text-sm font-mono text-zinc-500">&copy; {new Date().getFullYear()} Mohanad Al-Daghestani. Engineering Excellence.</span>
         </div>
         
         <div className="flex items-center gap-6">
           <a href="#" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">Privacy Policy</a>
           <a href="#" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">Terms of Service</a>
-          <a href="#" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors uppercase tracking-widest bg-white/5 px-3 py-1 rounded">Backend v2.4.0</a>
+          <a href="#" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors uppercase tracking-widest bg-white/5 px-3 py-1 rounded">Stack: .NET 8 + React</a>
         </div>
       </div>
     </footer>

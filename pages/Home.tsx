@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -9,7 +8,7 @@ import Contact from '../components/Contact';
 
 const Home: React.FC = () => {
   useEffect(() => {
-    document.title = "Mohanned | Senior Backend Engineer Portfolio";
+    document.title = "Mohanad Al-Daghestani | Fullstack Developer Portfolio";
   }, []);
 
   return (

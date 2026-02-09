@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, ShieldCheck, Zap, Info, Layers, BookOpen } from 'lucide-react';
@@ -13,7 +12,7 @@ const ProjectDetails: React.FC = () => {
     if (!project) {
       navigate('/');
     } else {
-      document.title = `${project.title} | Mohanned's Case Study`;
+      document.title = `${project.title} | Technical Preview`;
     }
   }, [project, navigate]);
 
@@ -46,7 +45,19 @@ const ProjectDetails: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              {project.githubUrl && (
+              {project.repositories ? (
+                project.repositories.map((repo, idx) => (
+                  <a
+                    key={idx}
+                    href={repo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 hover:border-white/20 transition-all font-semibold"
+                  >
+                    <Github className="w-5 h-5" /> {repo.label}
+                  </a>
+                ))
+              ) : project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -56,6 +67,7 @@ const ProjectDetails: React.FC = () => {
                   <Github className="w-5 h-5" /> Source Code
                 </a>
               )}
+              
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}

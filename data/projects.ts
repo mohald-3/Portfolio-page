@@ -1,123 +1,65 @@
-
 import { Project } from '../types';
 
 export const projects: Project[] = [
   {
-    slug: "nexus-commerce-api",
-    title: "Nexus E-Commerce Engine",
-    summary: "A high-performance, event-driven e-commerce backend built with .NET 8 and RabbitMQ.",
-    description: "Nexus is a complete overhaul of a traditional retail backend, focusing on eventual consistency and massive horizontal scalability. It handles thousands of concurrent transactions per second while maintaining strict audit trails.",
-    tags: ["C#", "RabbitMQ", "PostgreSQL", "Redis", "Docker", "DDD"],
+    slug: "plugg-kompis",
+    title: "PluggKompis",
+    summary: "A fullstack collaborative platform connecting parents, students, and volunteers to organize free homework help across Sweden.",
+    description: "PluggKompis is a multi-role web platform designed to facilitate academic support. It features a robust booking system, venue management, and analytics for volunteers tracking their hours.",
+    tags: [".NET 8", "React", "TypeScript", "Clean Architecture", "CQRS", "Azure SQL", "QuestPDF"],
     highlights: [
-      "Event-driven architecture for order processing and inventory management.",
-      "Distributed locking using Redis to prevent double-spending in race conditions.",
-      "Comprehensive API documentation using Swagger/OpenAPI.",
-      "95% unit test coverage for core domain logic using xUnit and Moq."
+      "Designed tailored user roles for parents, students, venues, and volunteers.",
+      "Implemented JWT authentication and granular role-based access control.",
+      "Developed a dashboard with coverage analytics and automated PDF export using QuestPDF.",
+      "Built a modular frontend using TanStack Query for efficient state management."
     ],
     architecture: {
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000&auto=format&fit=crop",
-      description: "The system utilizes the Clean Architecture pattern (Domain, Application, Infrastructure, WebAPI). External events are ingested via RabbitMQ, processed by specialized worker services, and persisted to a sharded PostgreSQL cluster."
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000&auto=format&fit=crop",
+      description: "The backend follows Clean Architecture principles with MediatR for CQRS, ensuring a strict separation of concerns. Data persistence is handled by EF Core and Azure SQL, with CI/CD pipelines managing the deployment lifecycle."
     },
     challenges: [
       {
-        problem: "Race conditions in inventory updates during high-velocity flash sales.",
-        solution: "Implemented a distributed lock mechanism using RedLock on a Redis cluster, ensuring atomic inventory decrements with sub-millisecond overhead."
-      },
-      {
-        problem: "High latency when searching millions of product SKU variations with complex metadata.",
-        solution: "Integrated Elasticsearch as the primary read-model for catalog searches, reducing average query response time from 850ms to 18ms."
+        problem: "Managing complex scheduling and venue availability for multiple user roles.",
+        solution: "Implemented a custom booking engine within the Application layer that validates venue capacity and volunteer availability in real-time."
       }
     ],
     lessons: [
-      "The critical importance of idempotent consumers in distributed message-based systems.",
-      "How to manage complex sagas for long-running business processes without relying on global transactions.",
-      "Fine-tuning PostgreSQL indexing strategies for large-scale JSONB data storage."
+      "Advanced domain modeling for multi-tenant collaborative platforms.",
+      "Optimizing SQL queries for dashboard analytics and reporting."
     ],
-    githubUrl: "https://github.com/mohanned/nexus-commerce",
-    liveUrl: "https://nexus-demo.mohanned.dev"
+    githubUrl: "https://github.com/PluggKompis/pluggkompis-client",
+    repositories: [
+      { label: "Frontend Repo", url: "https://github.com/PluggKompis/pluggkompis-client" },
+      { label: "Backend Repo", url: "https://github.com/PluggKompis/pluggkompis-api" }
+    ],
+    liveUrl: "https://pluggkompis-client.vercel.app/"
   },
   {
-    slug: "stream-analytics-mesh",
-    title: "Stream Analytics Mesh",
-    summary: "Real-time telemetry processing system for IoT sensors with sub-second latency.",
-    description: "A specialized data mesh designed to ingest, process, and visualize telemetry from over 100,000 concurrent IoT devices across multiple regions.",
-    tags: ["Go", "gRPC", "InfluxDB", "Kafka", "Kubernetes"],
+    slug: "fridge-pal",
+    title: "FridgePal",
+    summary: "AI-powered mobile application designed to reduce food waste through automated product tracking and image recognition.",
+    description: "Developed during a hackathon, FridgePal helps users track fridge/freezer inventory. It integrates AI for product identification and expiration date tracking to notify users before food spoils.",
+    tags: [".NET", "AI", "OCR", "Azure SQL", "Clean Architecture", "FluentValidation"],
     highlights: [
-      "Sub-100ms end-to-end latency for critical system alerts.",
-      "Multi-region deployment on AWS using Terraform for Infrastructure as Code.",
-      "Highly efficient gRPC communication between internal mesh nodes.",
-      "Dynamic auto-scaling based on real-time ingest volume metrics."
+      "Integrated AI-based image recognition and OCR for automated data entry.",
+      "Architecture based on DTOs, MediatR, and FluentValidation for robust API responses.",
+      "Lead API designer responsible for business logic and validation layers.",
+      "Ensured high testability and scalability through modular backend design."
     ],
     architecture: {
-      image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=2000&auto=format&fit=crop",
-      description: "A Kafka-based pipeline where raw telemetry is validated, enriched via micro-enrichers, and stored in a time-series database (InfluxDB) while triggering real-time anomaly detection webhooks."
+      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2000&auto=format&fit=crop",
+      description: "A specialized backend integrating external AI services. The system uses Azure SQL for storage and is built to be cloud-ready and highly scalable for mobile clients."
     },
     challenges: [
       {
-        problem: "Memory leaks in the data ingestor during peak traffic spikes.",
-        solution: "Refactored the Go worker pool to use zero-allocation techniques and optimized memory management by reusing buffers."
+        problem: "Accurate extraction of expiration dates from varied packaging types via OCR.",
+        solution: "Implemented a normalization layer that uses pattern matching and domain-specific rules to validate OCR results."
       }
     ],
     lessons: [
-      "Scaling WebSocket connections across multiple server nodes using a Redis-backed pub/sub system.",
-      "Effective monitoring and alerting with Prometheus and Grafana in a containerized environment."
+      "Agile development and rapid prototyping in a hackathon environment.",
+      "Integrating third-party AI/ML services into a .NET Core backend."
     ],
-    githubUrl: "https://github.com/mohanned/stream-mesh"
-  },
-  {
-    slug: "guardian-auth-service",
-    title: "Guardian Identity Provider",
-    summary: "OAuth2/OpenID Connect implementation focused on high security and auditability.",
-    description: "Guardian provides a centralized identity management solution for enterprise microservices, featuring biometric support and advanced MFA workflows.",
-    tags: ["C#", "OIDC", "JWT", "SQL Server", "Security"],
-    highlights: [
-      "Strict adherence to OAuth2 and OpenID Connect specifications.",
-      "Support for WebAuthn/FIDO2 biometric authentication methods.",
-      "Encryption of user data at rest with automatic key rotation via AWS KMS.",
-      "Detailed security event logging and real-time anomaly detection."
-    ],
-    architecture: {
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2000&auto=format&fit=crop",
-      description: "A centralized authority built on Duende IdentityServer, using a decoupled persistent layer to support multiple database backends and high-availability caching."
-    },
-    challenges: [
-      {
-        problem: "Mitigating brute-force and credential stuffing attacks on legacy user accounts.",
-        solution: "Implemented an adaptive rate-limiting layer based on IP, user-agent heuristics, and geo-location using a sliding window algorithm."
-      }
-    ],
-    lessons: [
-      "Managing complex certificate hierarchies for JWT signing and validation.",
-      "The nuances of Refresh Token rotation for Single Page Applications (SPAs)."
-    ],
-    githubUrl: "https://github.com/mohanned/guardian-auth"
-  },
-  {
-    slug: "edge-cache-proxy",
-    title: "Edge Cache Proxy",
-    summary: "Custom reverse proxy with intelligent caching and load balancing.",
-    description: "A lightweight, high-performance reverse proxy designed for specialized caching of dynamic content at the edge.",
-    tags: ["Rust", "Tokio", "HTTP/2", "Cache"],
-    highlights: [
-      "Asynchronous I/O using the Tokio runtime for maximum throughput.",
-      "Custom LRU caching algorithm optimized for high-hit ratios.",
-      "Integrated health checks and automatic failover for backend clusters.",
-      "Low-overhead metrics export for monitoring."
-    ],
-    architecture: {
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop",
-      description: "A multi-threaded proxy layer that sits in front of application servers, managing SSL termination and request routing based on custom weighted algorithms."
-    },
-    challenges: [
-      {
-        problem: "Handling high concurrency with minimal CPU overhead.",
-        solution: "Leveraged Rust's ownership model and the Tokio ecosystem to achieve thread-safe, non-blocking I/O operations."
-      }
-    ],
-    lessons: [
-      "The performance benefits of zero-copy parsing in network applications.",
-      "Designing for high availability in the face of partial system failures."
-    ],
-    githubUrl: "https://github.com/mohanned/edge-cache"
+    githubUrl: "https://github.com/mohald-3/FridgePalBE"
   }
 ];

@@ -1,63 +1,69 @@
-
 import { Profile } from '../types';
 
 export const profile: Profile = {
-  name: "Mohanned",
-  role: "Senior Backend Engineer",
-  summary: "Architecting scalable cloud-native systems with a focus on high-performance C# and distributed systems. Expert in Domain-Driven Design and Clean Architecture.",
+  name: "Mohanad Al-Daghestani",
+  role: "Fullstack Developer",
+  summary: "Self-motivated .NET Developer with a background in structural engineering. I build scalable, testable applications using Clean Architecture, CQRS, and DevOps practices, with hands-on experience in React and TypeScript.",
   aboutBullets: [
-    "Expertise in designing and implementing high-throughput microservices using .NET Core and Node.js.",
-    "Committed to Clean Architecture principles, ensuring maintainability and testability of complex domain logic.",
-    "Proficient in both SQL and NoSQL databases, optimizing queries and schemas for massive scale.",
-    "Strong focus on automation, CI/CD, and infrastructure as code to streamline development lifecycles.",
-    "Proven track record of solving bottleneck issues in legacy monoliths by transitioning to event-driven architectures."
+    "Transitioned from a successful career in Structural Engineering to Software Developer, bringing unique problem-solving perspectives.",
+    "Specialized in the .NET ecosystem, implementing Clean Architecture and CQRS patterns with MediatR and EF Core.",
+    "Experienced in building modern, responsive frontends using React 18, TypeScript, and TailwindCSS.",
+    "Strong focus on API design, secure authentication mechanisms (JWT), and thorough documentation using Swagger.",
+    "Committed to DevOps excellence with Azure, Docker, and GitHub Actions CI/CD pipelines.",
+    "Passionate about clean code, SOLID principles, and delivering value-driven engineering solutions."
   ],
   skills: [
     {
-      category: "Backend",
-      items: ["C#", "ASP.NET Core", "Node.js", "Go", "gRPC", "REST APIs", "SignalR"]
+      category: "Backend & APIs",
+      items: ["C#", ".NET", "ASP.NET Core", "EF Core", "REST APIs", "Identity", "CQRS (MediatR)", "Clean Architecture"]
     },
     {
-      category: "Architecture & Patterns",
-      items: ["DDD", "CQRS", "MediatR", "Microservices", "Clean Architecture", "Unit Testing", "TDD"]
+      category: "Frontend & UI",
+      items: ["React.js", "TypeScript", "Angular", "TailwindCSS", "React Query", "Vite", "Zod", "React Hook Form"]
     },
     {
-      category: "Databases",
-      items: ["PostgreSQL", "SQL Server", "Redis", "MongoDB", "Elasticsearch", "Entity Framework Core"]
+      category: "Infrastructure & DevOps",
+      items: ["Azure", "Docker", "GitHub Actions", "CI/CD", "Swagger", "Postman", "JWT Auth"]
     },
     {
-      category: "DevOps & Cloud",
-      items: ["Docker", "Kubernetes", "AWS", "Azure", "GitHub Actions", "Terraform", "Prometheus"]
+      category: "Database",
+      items: ["SQL Server", "PostgreSQL", "SQLite", "MongoDB"]
     },
     {
-      category: "Frontend",
-      items: ["React", "TypeScript", "Tailwind CSS", "Next.js"]
+      category: "Principles",
+      items: ["Clean Code", "TDD", "SOLID", "Agile/Scrum", "API-first", "Separation of Concerns"]
     }
   ],
   experience: [
     {
-      title: "Senior Software Engineer",
-      company: "TechScale Solutions",
-      period: "2021 - Present",
-      description: "Leading the transition of a monolithic payment gateway to a distributed microservices architecture, improving system uptime to 99.99%."
+      title: "Software Developer Intern",
+      company: "Go.Do. AB",
+      period: "2025/09 - 2025/11",
+      description: "Built modular backend APIs using .NET and Clean Architecture. Contributed to frontend development with React 18 and TanStack Query, implementing form validation and secure authentication."
     },
     {
-      title: "Backend Developer",
-      company: "DataFlow Systems",
-      period: "2019 - 2021",
-      description: "Optimized data processing pipelines for real-time analytics, reducing processing latency by 45% through Redis caching strategies."
+      title: "Civil Engineer",
+      company: "Dala Trähus, Ljungskile",
+      period: "2022/06 - 2024/02",
+      description: "Managed technical documentation and coordinated complex construction projects. Maintained internal IT systems including server management and VPN infrastructure."
     },
     {
-      title: "Full Stack Developer",
-      company: "Innovate Labs",
-      period: "2017 - 2019",
-      description: "Developed and maintained several customer-facing web applications using ASP.NET Core and React."
+      title: "Freelance Architect & Business Owner",
+      company: "Partille",
+      period: "2022/01 - 2022/06",
+      description: "Managed architectural design projects and business operations for local clients."
+    },
+    {
+      title: "Architectural Civil Engineer",
+      company: "Volunteer Work, EWB, Gothenburg",
+      period: "2020/11 - 2022/05",
+      description: "Applied engineering expertise to volunteer infrastructure projects with Engineers Without Borders."
     }
   ],
   socials: [
-    { platform: "GitHub", url: "https://github.com/mohanned" },
-    { platform: "LinkedIn", url: "https://linkedin.com/in/mohanned" },
-    { platform: "Email", url: "mailto:contact@mohanned.dev" },
-    { platform: "CV", url: "#" }
+    { platform: "GitHub", url: "https://github.com/mohald-3" },
+    { platform: "LinkedIn", url: "https://linkedin.com/in/al-daghestani" },
+    { platform: "Email", url: "mailto:mohanad.aldaghestani@gmail.com" },
+    { platform: "CV", url: "/Mohanad_Al_Daghestani_CV.pdf" }
   ]
 };
