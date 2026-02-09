@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <Link
             to={`/projects/${project.slug}`}
             className="p-2 text-zinc-400 hover:text-white bg-white/5 rounded-lg transition-all"
-            title="View Technical Preview"
+            title="View Details"
           >
             <ArrowUpRight className="w-5 h-5" />
           </Link>
@@ -48,7 +48,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           to={`/projects/${project.slug}`}
           className="text-xs font-bold text-white uppercase tracking-widest hover:text-purple-400 transition-colors"
         >
-          Technical Preview
+          View Details
         </Link>
         <div className="flex-grow"></div>
         {project.githubUrl && (

@@ -60,6 +60,10 @@ export const projects: Project[] = [
       "Agile development and rapid prototyping in a hackathon environment.",
       "Integrating third-party AI/ML services into a .NET Core backend."
     ],
-    githubUrl: "https://github.com/mohald-3/FridgePalBE"
+    githubUrl: "https://github.com/mohald-3/FridgePalBE",
+    repositories: [
+      { label: "Frontend Repo", url: "https://github.com/mohald-3/FridgePalFE" },
+      { label: "Backend Repo", url: "https://github.com/mohald-3/FridgePalBE" }
+    ]
   }
 ];

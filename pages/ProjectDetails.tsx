@@ -12,7 +12,7 @@ const ProjectDetails: React.FC = () => {
     if (!project) {
       navigate('/');
     } else {
-      document.title = `${project.title} | Technical Preview`;
+      document.title = `${project.title} | Project Details`;
     }
   }, [project, navigate]);
 
@@ -91,7 +91,7 @@ const ProjectDetails: React.FC = () => {
               <div className="inline-flex p-3 bg-purple-900/20 rounded-xl border border-purple-500/20">
                 <Info className="w-6 h-6 text-purple-400" />
               </div>
-              <h2 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Technical Brief</h2>
+              <h2 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Project Brief</h2>
               <div className="h-px w-12 bg-purple-500/50"></div>
             </div>
           </div>
@@ -160,7 +160,7 @@ const ProjectDetails: React.FC = () => {
               <div className="inline-flex p-3 bg-purple-900/20 rounded-xl border border-purple-500/20">
                 <ShieldCheck className="w-6 h-6 text-purple-400" />
               </div>
-              <h2 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Critical Bottlenecks</h2>
+              <h2 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Challenges</h2>
               <div className="h-px w-12 bg-purple-500/50"></div>
             </div>
           </div>
@@ -173,7 +173,7 @@ const ProjectDetails: React.FC = () => {
                 </div>
                 <div className="h-px w-full bg-white/5"></div>
                 <div>
-                  <h4 className="text-zinc-500 font-bold text-xs uppercase tracking-[0.2em] mb-3 font-mono">Engineering Response</h4>
+                  <h4 className="text-zinc-500 font-bold text-xs uppercase tracking-[0.2em] mb-3 font-mono">Solution</h4>
                   <p className="text-zinc-400 leading-relaxed">{c.solution}</p>
                 </div>
               </div>
