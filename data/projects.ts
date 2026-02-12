@@ -6,11 +6,12 @@ export const projects: Project[] = [
     title: "PluggKompis",
     summary: "A fullstack collaborative platform connecting parents, students, and volunteers to organize free homework help across Sweden.",
     description: "PluggKompis is a multi-role web platform designed to facilitate academic support. It features a robust booking system, venue management, and analytics for volunteers tracking their hours.",
-    thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/plugg-kompis/thumbnail.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1454165833767-027ffea9e78b?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop"
+      "/projects/plugg-kompis/gallery-1.jpg",
+      "/projects/plugg-kompis/gallery-2.jpg",
+      "/projects/plugg-kompis/gallery-3.jpg",
+      "/projects/plugg-kompis/gallery-4.jpg"
     ],
     tags: [".NET 8", "React", "TypeScript", "Clean Architecture", "CQRS", "Azure SQL", "QuestPDF"],
     highlights: [
@@ -45,10 +46,13 @@ export const projects: Project[] = [
     title: "FridgePal",
     summary: "AI-powered mobile application designed to reduce food waste through automated product tracking and image recognition.",
     description: "Developed during a hackathon, FridgePal helps users track fridge/freezer inventory. It integrates AI for product identification and expiration date tracking to notify users before food spoils.",
-    thumbnail: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/fridge-pal/thumbnail.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1579113817591-954c6a3c5747?q=80&w=1200&auto=format&fit=crop"
+      "/projects/fridge-pal/gallery-1.jpg",
+      "/projects/fridge-pal/gallery-2.jpg",
+      "/projects/fridge-pal/gallery-3.jpg",
+      "/projects/fridge-pal/gallery-4.jpg",
+      "/projects/fridge-pal/gallery-5.jpg"
     ],
     tags: [".NET", "AI", "OCR", "Azure SQL", "Clean Architecture", "FluentValidation"],
     highlights: [

@@ -1,13 +1,34 @@
-// Add React import to fix namespace error
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink, ShieldCheck, Zap, Info, Layers, BookOpen, Image as ImageIcon } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  Github, 
+  ExternalLink, 
+  ShieldCheck, 
+  Zap, 
+  Info, 
+  Layers, 
+  BookOpen, 
+  Image as ImageIcon,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  MousePointer2
+} from 'lucide-react';
 import { projects } from '../data/projects';
 
 const ProjectDetails: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const project = projects.find(p => p.slug === slug);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Lightbox State
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  // Combine thumbnail and gallery for unified browsing
+  const allImages = project ? [project.thumbnail, ...(project.gallery || [])] : [];
 
   useEffect(() => {
     if (!project) {
@@ -17,13 +38,82 @@ const ProjectDetails: React.FC = () => {
     }
   }, [project, navigate]);
 
+  // Handle Keyboard Navigation
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (lightboxIndex === null) return;
+
+    if (e.key === 'Escape') setLightboxIndex(null);
+    if (e.key === 'ArrowRight') {
+      setLightboxIndex((prev) => (prev !== null && prev < allImages.length - 1 ? prev + 1 : prev));
+    }
+    if (e.key === 'ArrowLeft') {
+      setLightboxIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
+    }
+  }, [lightboxIndex, allImages.length]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    if (lightboxIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown, lightboxIndex]);
+
   if (!project) return null;
 
   return (
     <div className="min-h-screen pb-20 animate-in fade-in duration-500 bg-[#0a0a0c]">
-      {/* Dynamic Hero Area with Thumbnail Background */}
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-300"
+          onClick={() => setLightboxIndex(null)}
+        >
+          {/* Close Button */}
+          <button 
+            className="absolute top-6 right-6 p-3 text-zinc-400 hover:text-white transition-colors z-[110]"
+            onClick={() => setLightboxIndex(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+
+          {/* Navigation Controls */}
+          <div className="absolute inset-x-4 md:inset-x-10 flex justify-between items-center pointer-events-none z-[105]">
+            <button 
+              className={`p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all pointer-events-auto ${lightboxIndex === 0 ? 'opacity-20 cursor-not-allowed' : 'opacity-100'}`}
+              onClick={(e) => { e.stopPropagation(); if(lightboxIndex > 0) setLightboxIndex(lightboxIndex - 1); }}
+              disabled={lightboxIndex === 0}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              className={`p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all pointer-events-auto ${lightboxIndex === allImages.length - 1 ? 'opacity-20 cursor-not-allowed' : 'opacity-100'}`}
+              onClick={(e) => { e.stopPropagation(); if(lightboxIndex < allImages.length - 1) setLightboxIndex(lightboxIndex + 1); }}
+              disabled={lightboxIndex === allImages.length - 1}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Main Image View */}
+          <div className="relative max-w-[90vw] max-h-[85vh] flex flex-col items-center">
+            <img 
+              src={allImages[lightboxIndex]} 
+              alt={`Gallery view ${lightboxIndex + 1}`} 
+              className="max-w-full max-h-[80vh] object-contain shadow-2xl rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <div className="mt-6 text-zinc-500 font-mono text-xs uppercase tracking-[0.3em]">
+              File {lightboxIndex + 1} of {allImages.length}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Dynamic Hero Area */}
       <div className="relative pt-12 pb-32 px-4 sm:px-6 lg:px-8 border-b border-white/5 overflow-hidden">
-        {/* Background Image Layer */}
         <div className="absolute inset-0 z-0">
           <img 
             src={project.thumbnail} 
@@ -95,7 +185,7 @@ const ProjectDetails: React.FC = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32">
-        {/* Overview */}
+        {/* Overview & Main Preview */}
         <section className="grid md:grid-cols-12 gap-12">
           <div className="md:col-span-4">
             <div className="sticky top-24 space-y-4">
@@ -106,7 +196,18 @@ const ProjectDetails: React.FC = () => {
               <div className="h-px w-12 bg-purple-500/50"></div>
             </div>
           </div>
-          <div className="md:col-span-8">
+          <div className="md:col-span-8 space-y-8">
+            <div 
+              className="relative group cursor-zoom-in rounded-3xl overflow-hidden border border-white/10 ring-1 ring-white/5"
+              onClick={() => setLightboxIndex(0)}
+            >
+              <img src={project.thumbnail} alt={project.title} className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-700" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20">
+                  <Maximize2 className="w-6 h-6 text-white" />
+                </div>
+              </div>
+            </div>
             <p className="text-zinc-300 text-lg leading-relaxed whitespace-pre-wrap">
               {project.description}
             </p>
@@ -136,29 +237,74 @@ const ProjectDetails: React.FC = () => {
           </div>
         </section>
 
-        {/* Visual Walkthrough / Gallery */}
+        {/* Visual Walkthrough / Horizontal Gallery */}
         {project.gallery && project.gallery.length > 0 && (
-          <section className="grid md:grid-cols-12 gap-12">
-            <div className="md:col-span-4">
-              <div className="sticky top-24 space-y-4">
-                <div className="inline-flex p-3 bg-purple-900/20 rounded-xl border border-purple-500/20">
-                  <ImageIcon className="w-6 h-6 text-purple-400" />
+          <section className="space-y-8">
+            <div className="grid md:grid-cols-12 gap-12">
+              <div className="md:col-span-4">
+                <div className="space-y-4">
+                  <div className="inline-flex p-3 bg-purple-900/20 rounded-xl border border-purple-500/20">
+                    <ImageIcon className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <h2 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Gallery</h2>
+                  <div className="h-px w-12 bg-purple-500/50"></div>
+                  <div className="flex items-center gap-2 text-zinc-500 text-xs font-mono uppercase tracking-widest pt-2">
+                    <MousePointer2 className="w-3 h-3" /> Drag to explore
+                  </div>
                 </div>
-                <h2 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Visuals</h2>
-                <div className="h-px w-12 bg-purple-500/50"></div>
               </div>
             </div>
-            <div className="md:col-span-8">
-              <div className="grid grid-cols-1 gap-6">
+
+            {/* Horizontal Scroll Container */}
+            <div className="relative group/gallery">
+              <div 
+                ref={scrollContainerRef}
+                className="flex gap-6 overflow-x-auto pb-8 snap-x mandatory no-scrollbar px-4 sm:px-0"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
                 {project.gallery.map((image, i) => (
-                  <div key={i} className="rounded-3xl overflow-hidden border border-white/10 bg-[#161618] group ring-1 ring-white/5">
-                    <img 
-                      src={image} 
-                      alt={`${project.title} Preview ${i + 1}`} 
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100"
-                    />
+                  <div 
+                    key={i} 
+                    className="flex-none w-[85%] md:w-[70%] lg:w-[60%] snap-center"
+                  >
+                    <div 
+                      className="relative group cursor-zoom-in rounded-3xl overflow-hidden border border-white/10 bg-[#161618] ring-1 ring-white/5 transition-all duration-500 hover:border-purple-500/30"
+                      onClick={() => setLightboxIndex(i + 1)}
+                    >
+                      {/* Image container with adaptive max-height */}
+                      <div className="relative overflow-hidden flex items-center justify-center bg-zinc-900/50">
+                        <img 
+                          src={image} 
+                          alt={`${project.title} Preview ${i + 1}`} 
+                          className="w-full h-auto max-h-[70vh] object-contain transition-transform duration-700 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100 shadow-2xl"
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                          <div className="bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20">
+                            <Maximize2 className="w-6 h-6 text-white" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Navigation Indicators Overlay (Optional Desktop Hints) */}
+              <div className="absolute -left-4 top-1/2 -translate-y-1/2 hidden lg:group-hover/gallery:flex">
+                 <button 
+                  onClick={() => scrollContainerRef.current?.scrollBy({ left: -400, behavior: 'smooth' })}
+                  className="p-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-purple-600 transition-colors"
+                 >
+                   <ChevronLeft className="w-6 h-6" />
+                 </button>
+              </div>
+              <div className="absolute -right-4 top-1/2 -translate-y-1/2 hidden lg:group-hover/gallery:flex">
+                 <button 
+                  onClick={() => scrollContainerRef.current?.scrollBy({ left: 400, behavior: 'smooth' })}
+                  className="p-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-purple-600 transition-colors"
+                 >
+                   <ChevronRight className="w-6 h-6" />
+                 </button>
               </div>
             </div>
           </section>
