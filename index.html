@@ -8,11 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #0a0a0c;
-        color: #e4e4e7;
         overflow-x: hidden;
       }
       .font-mono {
@@ -22,24 +25,33 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .dark ::-webkit-scrollbar-track {
         background: #0a0a0c;
       }
       ::-webkit-scrollbar-thumb {
-        background: #27272a;
+        background: #d4d4d8;
         border-radius: 4px;
       }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #27272a;
+      }
       ::-webkit-scrollbar-thumb:hover {
+        background: #a1a1aa;
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
         background: #3f3f46;
       }
       html {
         scroll-behavior: smooth;
       }
-      .purple-glow:hover {
-        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
       }
-      .bg-blur {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
     </style>
   <script type="importmap">
@@ -56,7 +68,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
+  <body class="bg-[#fafafa] dark:bg-[#0a0a0c] text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

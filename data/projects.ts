@@ -10,9 +10,7 @@ export const projects: Project[] = [
     gallery: [
       "/projects/plugg-kompis/gallery-1.jpg",
       "/projects/plugg-kompis/gallery-2.jpg",
-      "/projects/plugg-kompis/gallery-3.jpg",
-      "/projects/plugg-kompis/gallery-4.jpg",
-      "/projects/plugg-kompis/gallery-5.jpg"
+      "/projects/plugg-kompis/gallery-3.jpg"
     ],
     tags: [".NET 8", "React", "TypeScript", "Clean Architecture", "CQRS", "Azure SQL", "QuestPDF"],
     highlights: [
@@ -50,10 +48,7 @@ export const projects: Project[] = [
     thumbnail: "/projects/fridge-pal/thumbnail.jpg",
     gallery: [
       "/projects/fridge-pal/gallery-1.jpg",
-      "/projects/fridge-pal/gallery-2.jpg",
-      "/projects/fridge-pal/gallery-3.jpg",
-      "/projects/fridge-pal/gallery-4.jpg",
-      "/projects/fridge-pal/gallery-5.jpg"
+      "/projects/fridge-pal/gallery-2.jpg"
     ],
     tags: [".NET", "AI", "OCR", "Azure SQL", "Clean Architecture", "FluentValidation"],
     highlights: [

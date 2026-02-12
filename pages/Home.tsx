@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="animate-in fade-in duration-700 bg-[#0a0a0c]">
+    <div className="animate-in fade-in duration-700 bg-transparent">
       <Hero />
       <About />
       <Skills />

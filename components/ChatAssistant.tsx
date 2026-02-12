@@ -81,24 +81,24 @@ const ChatAssistant: React.FC = () => {
   return (
     <div className="fixed bottom-6 right-6 z-[60]">
       {isOpen ? (
-        <div className="w-[90vw] sm:w-96 h-[500px] bg-[#0a0a0c] border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 ring-1 ring-purple-500/20">
-          <div className="p-4 border-b border-white/10 bg-[#161618] flex justify-between items-center">
+        <div className="w-[90vw] sm:w-96 h-[500px] bg-white dark:bg-[#0a0a0c] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 ring-1 ring-purple-500/20">
+          <div className="p-4 border-b border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-[#161618] flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <Bot className="w-5 h-5 text-purple-500" />
-              <span className="font-bold text-white text-xs uppercase tracking-widest font-mono">System Assistant</span>
+              <Bot className="w-5 h-5 text-purple-600 dark:text-purple-500" />
+              <span className="font-bold text-zinc-900 dark:text-white text-[10px] uppercase tracking-widest font-mono">System Assistant</span>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-zinc-500 hover:text-white transition-colors">
+            <button onClick={() => setIsOpen(false)} className="text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-white transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          <div ref={scrollRef} className="flex-grow p-4 overflow-y-auto space-y-4 bg-gradient-to-b from-[#0a0a0c] to-[#121214]">
+          <div ref={scrollRef} className="flex-grow p-4 overflow-y-auto space-y-4 bg-gradient-to-b from-white to-zinc-50 dark:from-[#0a0a0c] dark:to-[#121214]">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-3 rounded-xl text-sm leading-relaxed ${
                   msg.role === 'user' 
                     ? 'bg-purple-600 text-white rounded-br-none shadow-lg shadow-purple-900/20' 
-                    : 'bg-white/5 text-zinc-300 rounded-bl-none border border-white/10'
+                    : 'bg-zinc-100 dark:bg-white/5 text-zinc-700 dark:text-zinc-300 rounded-bl-none border border-zinc-200 dark:border-white/10 shadow-sm dark:shadow-none'
                 }`}>
                   <p>{msg.text}</p>
                 </div>
@@ -106,14 +106,14 @@ const ChatAssistant: React.FC = () => {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="bg-white/5 p-3 rounded-xl rounded-bl-none border border-white/10">
-                  <Loader2 className="w-4 h-4 text-purple-500 animate-spin" />
+                <div className="bg-zinc-100 dark:bg-white/5 p-3 rounded-xl rounded-bl-none border border-zinc-200 dark:border-white/10">
+                  <Loader2 className="w-4 h-4 text-purple-600 dark:text-purple-500 animate-spin" />
                 </div>
               </div>
             )}
           </div>
 
-          <div className="p-4 border-t border-white/10 bg-[#161618]">
+          <div className="p-4 border-t border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-[#161618]">
             <div className="relative">
               <input
                 type="text"
@@ -121,12 +121,12 @@ const ChatAssistant: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Query system knowledge..."
-                className="w-full bg-[#0a0a0c] border border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-purple-500/50 transition-all font-mono"
+                className="w-full bg-white dark:bg-[#0a0a0c] border border-zinc-200 dark:border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-purple-500/50 transition-all font-mono"
               />
               <button 
                 onClick={handleSend}
                 disabled={loading}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-purple-500 hover:text-purple-400 disabled:opacity-50 transition-colors"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-purple-600 dark:text-purple-500 hover:text-purple-500 dark:hover:text-purple-400 disabled:opacity-50 transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>

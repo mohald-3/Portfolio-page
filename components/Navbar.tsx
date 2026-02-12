@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ArrowLeft } from 'lucide-react';
+import { Menu, X, ArrowLeft, Sun, Moon } from 'lucide-react';
 import Logo from './Logo';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  theme?: 'light' | 'dark';
+  toggleTheme?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -43,15 +48,15 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-blur bg-[#0a0a0c]/80 border-b border-white/10 shadow-lg' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 dark:bg-[#0a0a0c]/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10 shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.6)]">
+            <div className="transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.4)]">
               <Logo className="w-8 h-8" />
             </div>
-            <span className="text-sm font-bold tracking-[0.2em] text-white transition-colors duration-300 group-hover:text-purple-400 uppercase font-mono">
+            <span className="text-sm font-bold tracking-[0.2em] text-zinc-900 dark:text-white transition-colors duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 uppercase font-mono">
               MOHANAD
             </span>
           </Link>
@@ -59,7 +64,7 @@ const Navbar: React.FC = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {isProjectPage ? (
-              <Link to="/" className="flex items-center text-sm font-medium text-zinc-400 hover:text-purple-400 transition-colors">
+              <Link to="/" className="flex items-center text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
                 <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
               </Link>
             ) : (
@@ -67,19 +72,36 @@ const Navbar: React.FC = () => {
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-purple-400 transition-colors"
+                  className="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                 >
                   {link.name}
                 </button>
               ))
             )}
+            
+            <div className="w-px h-4 bg-zinc-200 dark:bg-zinc-800"></div>
+
+            {toggleTheme && (
+              <button 
+                onClick={toggleTheme}
+                className="p-2 rounded-lg bg-zinc-100 dark:bg-white/5 text-zinc-500 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
+                aria-label="Toggle Theme"
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center gap-2">
+            {toggleTheme && (
+              <button onClick={toggleTheme} className="p-2 text-zinc-500 dark:text-zinc-400">
+                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+            )}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-zinc-400 hover:text-white p-2"
+              className="text-zinc-500 dark:text-zinc-400 p-2"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -90,13 +112,13 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden bg-[#0a0a0c] border-b border-white/10 animate-in fade-in slide-in-from-top-4">
+        <div className="md:hidden bg-white dark:bg-[#0a0a0c] border-b border-zinc-200 dark:border-white/10 animate-in fade-in slide-in-from-top-4">
           <div className="px-4 pt-2 pb-6 space-y-1">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.href)}
-                className="block w-full text-left px-3 py-4 text-base font-medium text-zinc-400 hover:text-purple-400 hover:bg-white/5 rounded-md transition-colors"
+                className="block w-full text-left px-3 py-4 text-base font-medium text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-zinc-50 dark:hover:bg-white/5 rounded-md transition-colors"
               >
                 {link.name}
               </button>
