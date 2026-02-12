@@ -11,7 +11,8 @@ export const projects: Project[] = [
       "/projects/plugg-kompis/gallery-1.jpg",
       "/projects/plugg-kompis/gallery-2.jpg",
       "/projects/plugg-kompis/gallery-3.jpg",
-      "/projects/plugg-kompis/gallery-4.jpg"
+      "/projects/plugg-kompis/gallery-4.jpg",
+      "/projects/plugg-kompis/gallery-5.jpg"
     ],
     tags: [".NET 8", "React", "TypeScript", "Clean Architecture", "CQRS", "Azure SQL", "QuestPDF"],
     highlights: [
