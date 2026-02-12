@@ -64,6 +64,6 @@ export const profile: Profile = {
     { platform: "GitHub", url: "https://github.com/mohald-3" },
     { platform: "LinkedIn", url: "https://linkedin.com/in/al-daghestani" },
     { platform: "Email", url: "mailto:mohanad.aldaghestani@gmail.com" },
-    { platform: "CV", url: "/Mohanad_Al_Daghestani_CV.pdf" }
+    { platform: "CV", url: "/Mohanad_Al-Daghestani_CV.pdf" }
   ]
 };

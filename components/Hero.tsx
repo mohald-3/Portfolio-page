@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
                     href={social.url}
                     target={isCV ? undefined : "_blank"}
                     rel={isCV ? undefined : "noopener noreferrer"}
-                    download={isCV ? "Mohanad_Al_Daghestani_CV.pdf" : undefined}
+                    download={isCV ? "Mohanad_Al-Daghestani_CV.pdf" : undefined}
                     className="p-4 text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-300 hover:border-purple-500/30"
                     title={isCV ? "Download Resume" : social.platform}
                   >
