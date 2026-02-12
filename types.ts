@@ -25,6 +25,8 @@ export interface Project {
   title: string;
   summary: string;
   description: string;
+  thumbnail: string;
+  gallery?: string[]; // Added for extra project screenshots/placeholders
   tags: string[];
   highlights: string[];
   architecture: {

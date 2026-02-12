@@ -6,6 +6,12 @@ export const projects: Project[] = [
     title: "PluggKompis",
     summary: "A fullstack collaborative platform connecting parents, students, and volunteers to organize free homework help across Sweden.",
     description: "PluggKompis is a multi-role web platform designed to facilitate academic support. It features a robust booking system, venue management, and analytics for volunteers tracking their hours.",
+    thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1454165833767-027ffea9e78b?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop"
+    ],
     tags: [".NET 8", "React", "TypeScript", "Clean Architecture", "CQRS", "Azure SQL", "QuestPDF"],
     highlights: [
       "Designed tailored user roles for parents, students, venues, and volunteers.",
@@ -39,6 +45,11 @@ export const projects: Project[] = [
     title: "FridgePal",
     summary: "AI-powered mobile application designed to reduce food waste through automated product tracking and image recognition.",
     description: "Developed during a hackathon, FridgePal helps users track fridge/freezer inventory. It integrates AI for product identification and expiration date tracking to notify users before food spoils.",
+    thumbnail: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1579113817591-954c6a3c5747?q=80&w=1200&auto=format&fit=crop"
+    ],
     tags: [".NET", "AI", "OCR", "Azure SQL", "Clean Architecture", "FluentValidation"],
     highlights: [
       "Integrated AI-based image recognition and OCR for automated data entry.",
@@ -47,7 +58,7 @@ export const projects: Project[] = [
       "Ensured high testability and scalability through modular backend design."
     ],
     architecture: {
-      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop",
       description: "A specialized backend integrating external AI services. The system uses Azure SQL for storage and is built to be cloud-ready and highly scalable for mobile clients."
     },
     challenges: [

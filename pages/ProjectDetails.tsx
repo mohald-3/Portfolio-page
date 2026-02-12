@@ -1,6 +1,7 @@
+// Add React import to fix namespace error
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink, ShieldCheck, Zap, Info, Layers, BookOpen } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, ShieldCheck, Zap, Info, Layers, BookOpen, Image as ImageIcon } from 'lucide-react';
 import { projects } from '../data/projects';
 
 const ProjectDetails: React.FC = () => {
@@ -20,9 +21,19 @@ const ProjectDetails: React.FC = () => {
 
   return (
     <div className="min-h-screen pb-20 animate-in fade-in duration-500 bg-[#0a0a0c]">
-      {/* Header Area */}
-      <div className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 border-b border-white/5 bg-[#121214]">
-        <div className="max-w-4xl mx-auto">
+      {/* Dynamic Hero Area with Thumbnail Background */}
+      <div className="relative pt-12 pb-32 px-4 sm:px-6 lg:px-8 border-b border-white/5 overflow-hidden">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={project.thumbnail} 
+            alt="" 
+            className="w-full h-full object-cover opacity-20 blur-sm scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/80 via-[#0a0a0c] to-[#0a0a0c]"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative z-10">
           <Link to="/" className="inline-flex items-center text-sm font-medium text-zinc-500 hover:text-purple-400 transition-colors mb-12 group">
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> Back to Engineering
           </Link>
@@ -36,7 +47,7 @@ const ProjectDetails: React.FC = () => {
               ))}
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tight">
               {project.title}
             </h1>
             
@@ -44,7 +55,7 @@ const ProjectDetails: React.FC = () => {
               {project.summary}
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-4 pt-6">
               {project.repositories ? (
                 project.repositories.map((repo, idx) => (
                   <a
@@ -125,6 +136,34 @@ const ProjectDetails: React.FC = () => {
           </div>
         </section>
 
+        {/* Visual Walkthrough / Gallery */}
+        {project.gallery && project.gallery.length > 0 && (
+          <section className="grid md:grid-cols-12 gap-12">
+            <div className="md:col-span-4">
+              <div className="sticky top-24 space-y-4">
+                <div className="inline-flex p-3 bg-purple-900/20 rounded-xl border border-purple-500/20">
+                  <ImageIcon className="w-6 h-6 text-purple-400" />
+                </div>
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Visuals</h2>
+                <div className="h-px w-12 bg-purple-500/50"></div>
+              </div>
+            </div>
+            <div className="md:col-span-8">
+              <div className="grid grid-cols-1 gap-6">
+                {project.gallery.map((image, i) => (
+                  <div key={i} className="rounded-3xl overflow-hidden border border-white/10 bg-[#161618] group ring-1 ring-white/5">
+                    <img 
+                      src={image} 
+                      alt={`${project.title} Preview ${i + 1}`} 
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Architecture */}
         <section className="grid md:grid-cols-12 gap-12">
           <div className="md:col-span-4">
@@ -136,17 +175,9 @@ const ProjectDetails: React.FC = () => {
               <div className="h-px w-12 bg-purple-500/50"></div>
             </div>
           </div>
-          <div className="md:col-span-8 space-y-8">
-            <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 bg-[#161618] relative group ring-1 ring-white/5">
-              <img 
-                src={project.architecture.image} 
-                alt={`${project.title} Architecture Visual`} 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-            </div>
-            <div className="p-6 bg-purple-600/5 border border-purple-500/20 rounded-2xl">
-              <p className="text-zinc-400 leading-relaxed italic text-sm md:text-base">
+          <div className="md:col-span-8">
+            <div className="p-8 bg-purple-600/5 border border-purple-500/20 rounded-3xl">
+              <p className="text-zinc-300 leading-relaxed text-lg italic">
                 {project.architecture.description}
               </p>
             </div>

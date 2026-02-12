@@ -12,11 +12,7 @@ const Footer: React.FC = () => {
           <span className="text-sm font-mono text-zinc-500">&copy; {new Date().getFullYear()} Mohanad Al-Daghestani. Engineering Excellence.</span>
         </div>
         
-        <div className="flex items-center gap-6">
-          <a href="#" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">Privacy Policy</a>
-          <a href="#" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">Terms of Service</a>
-          <a href="#" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors uppercase tracking-widest bg-white/5 px-3 py-1 rounded">Stack: .NET 8 + React</a>
-        </div>
+        {/* Secondary links removed as requested */}
       </div>
     </footer>
   );
