@@ -4,20 +4,24 @@ export const projects: Project[] = [
   {
     slug: "plugg-kompis",
     title: "PluggKompis",
-    summary: "A fullstack collaborative platform connecting parents, students, and volunteers to organize free homework help across Sweden.",
+    summary: "A fullstack collaborative academic platform connecting parents, students, volunteers, and venues to organize free homework help across Sweden.",
+
     description: "PluggKompis is a multi-role web platform designed to facilitate academic support. It features a robust booking system, venue management, and analytics for volunteers tracking their hours.",
     thumbnail: "/projects/plugg-kompis/thumbnail.jpg",
     gallery: [
       "/projects/plugg-kompis/gallery-1.jpg",
       "/projects/plugg-kompis/gallery-2.jpg",
-      "/projects/plugg-kompis/gallery-3.jpg"
+      "/projects/plugg-kompis/gallery-3.jpg",
+      "/projects/plugg-kompis/gallery-4.jpg",
+      "/projects/plugg-kompis/gallery-5.jpg"
     ],
     tags: [".NET 8", "React", "TypeScript", "Clean Architecture", "CQRS", "Azure SQL", "QuestPDF"],
     highlights: [
-      "Designed tailored user roles for parents, students, venues, and volunteers.",
-      "Implemented JWT authentication and granular role-based access control.",
-      "Developed a dashboard with coverage analytics and automated PDF export using QuestPDF.",
-      "Built a modular frontend using TanStack Query for efficient state management."
+      "Designed multi-role system for parents, students, venues, and volunteers with tailored functionality.",
+      "Implemented JWT authentication and role-based access control.",
+      "Built booking system with real-time availability validation.",
+      "Developed analytics dashboard with automated PDF export using QuestPDF.",
+      "Contributed to domain modeling, scheduling logic, and CI/CD pipelines."
     ],
     architecture: {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000&auto=format&fit=crop",
@@ -43,19 +47,24 @@ export const projects: Project[] = [
   {
     slug: "fridge-pal",
     title: "FridgePal",
-    summary: "AI-powered mobile application designed to reduce food waste through automated product tracking and image recognition.",
+    summary: "AI-powered mobile application that reduces food waste by tracking fridge and freezer inventory using image recognition and OCR.",
     description: "Developed during a hackathon, FridgePal helps users track fridge/freezer inventory. It integrates AI for product identification and expiration date tracking to notify users before food spoils.",
     thumbnail: "/projects/fridge-pal/thumbnail.jpg",
     gallery: [
       "/projects/fridge-pal/gallery-1.jpg",
-      "/projects/fridge-pal/gallery-2.jpg"
+      "/projects/fridge-pal/gallery-2.jpg",
+      "/projects/fridge-pal/gallery-3.jpg",
+      "/projects/fridge-pal/gallery-4.jpg",
+      "/projects/fridge-pal/gallery-5.jpg",
+      "/projects/fridge-pal/gallery-6.jpg"
+
     ],
     tags: [".NET", "AI", "OCR", "Azure SQL", "Clean Architecture", "FluentValidation"],
     highlights: [
-      "Integrated AI-based image recognition and OCR for automated data entry.",
-      "Architecture based on DTOs, MediatR, and FluentValidation for robust API responses.",
-      "Lead API designer responsible for business logic and validation layers.",
-      "Ensured high testability and scalability through modular backend design."
+      "Integrated AI-based image recognition and OCR for automated product and expiration date detection.",
+      "Built backend using Clean Architecture, CQRS (MediatR), DTOs, and FluentValidation.",
+      "Designed modular and scalable API with Azure SQL storage.",
+      "Led business logic implementation and validation layers."
     ],
     architecture: {
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop",
