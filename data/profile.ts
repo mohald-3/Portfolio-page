@@ -3,9 +3,9 @@ import { Profile } from '../types';
 export const profile: Profile = {
   name: "Mohanad Al-Daghestani",
   role: "Fullstack Developer",
-  summary: "Self-motivated .NET Developer with a background in structural engineering. I build scalable, testable applications using Clean Architecture, CQRS, and DevOps practices, with hands-on experience in React and TypeScript.",
+  summary: "Self-motivated .NET Developer with a background in Architectural engineering. I build scalable, testable applications using Clean Architecture, CQRS, and DevOps practices, with hands-on experience in React and TypeScript.",
   aboutBullets: [
-    "Transitioned from a successful career in Structural Engineering to Software Developer, bringing unique problem-solving perspectives.",
+    "Transitioned from a successful career in Architectural Engineering to Software Developer, bringing unique problem-solving perspectives.",
     "Specialized in the .NET ecosystem, implementing Clean Architecture and CQRS patterns with MediatR and EF Core.",
     "Experienced in building modern, responsive frontends using React 18, TypeScript, and TailwindCSS.",
     "Strong focus on API design, secure authentication mechanisms (JWT), and thorough documentation using Swagger.",
