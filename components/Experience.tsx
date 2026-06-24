@@ -29,9 +29,35 @@ const Experience: React.FC = () => {
                 {exp.company}
               </p>
               
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg max-w-2xl">
-                {exp.description}
-              </p>
+              {exp.techLine && (
+                <p className="font-mono text-xs text-zinc-500 dark:text-zinc-500 mb-4 leading-relaxed">
+                  {exp.techLine}
+                </p>
+              )}
+
+              {exp.groups ? (
+                <div className="space-y-5 max-w-2xl">
+                  {exp.groups.map((group) => (
+                    <div key={group.heading}>
+                      <h4 className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 font-mono">
+                        {group.heading}
+                      </h4>
+                      <ul className="space-y-1.5">
+                        {group.bullets.map((bullet, i) => (
+                          <li key={i} className="flex gap-2 text-zinc-600 dark:text-zinc-400 text-base leading-relaxed">
+                            <span className="text-purple-500 shrink-0 mt-[3px]">–</span>
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg max-w-2xl">
+                  {exp.description}
+                </p>
+              )}
             </div>
           ))}
         </div>

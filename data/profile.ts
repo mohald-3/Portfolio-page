@@ -19,11 +19,15 @@ export const profile: Profile = {
     },
     {
       category: "Frontend & UI",
-      items: ["React.js", "TypeScript", "Angular", "TailwindCSS", "React Query", "Vite", "Zod", "React Hook Form"]
+      items: ["React.js", "Next.js", "TypeScript", "Angular", "TailwindCSS", "React Query", "Vite", "Zod", "React Hook Form"]
+    },
+    {
+      category: "Mobile",
+      items: ["React Native", "Expo", "EAS Build", "iOS", "Android", "Apple IAP", "Google Play Billing"]
     },
     {
       category: "Infrastructure & DevOps",
-      items: ["Azure", "Docker", "GitHub Actions", "CI/CD", "Swagger", "Postman", "JWT Auth"]
+      items: ["Docker", "GitHub Actions", "CI/CD", "EAS Build", "Caddy", "Azure", "Swagger", "Postman", "JWT Auth"]
     },
     {
       category: "Database",
@@ -36,10 +40,41 @@ export const profile: Profile = {
   ],
   experience: [
     {
-      title: "Software Developer Intern",
-      company: "Go.Do. AB",
-      period: "2025/09 - 2025/11",
-      description: "Built modular backend APIs using .NET and Clean Architecture. Contributed to frontend development with React 18 and TanStack Query, implementing form validation and secure authentication."
+      title: "Full-Stack Developer",
+      company: "Go-Do AB",
+      period: "Aug 2025 – Jun 2026",
+      description: "Designed and built the complete GODO platform end-to-end — backend API, organiser web app, and consumer mobile app — from initial architecture to production deployment across all three repos.",
+      techLine: ".NET 10 · C# · ASP.NET Core · EF Core · PostgreSQL · Next.js · TypeScript · React Native · Expo · Docker · GitHub Actions · EAS Build",
+      groups: [
+        {
+          heading: "Backend",
+          bullets: [
+            "Built a production REST API with 60+ endpoints using Clean Architecture and CQRS (MediatR), with a consistent OperationResult<T> response contract consumed by both web and mobile clients",
+            "Designed and integrated external data sync pipelines against two municipal APIs (Municipio, Svenska Kyrkan), processing and deduplicating events across 197 Swedish cities with AI-assisted classification",
+            "Built a full subscription system with in-app purchase receipt validation for both Google Play and Apple App Store, including acknowledgment and renewal handling",
+            "Implemented dual authentication (JWT + refresh token rotation) with email verification, social login (Google/Apple), password reset, and failed-login lockout",
+            "Wrote 343 automated tests (unit + integration) and maintained CI/CD with GitHub Actions and Docker deployment to a GleSYS VPS"
+          ]
+        },
+        {
+          heading: "Web",
+          bullets: [
+            "Built the organiser-facing web platform from scratch — multi-step event creation with complex scheduling modes, Cloudinary image uploads, and a full review/submit flow",
+            "Implemented a complete auth system with JWT + refresh token handling via Axios interceptors and TanStack Query for server state",
+            "Developed an admin moderation dashboard for reviewing submitted events and an organiser profile page with full CRUD",
+            "Localised the entire frontend to Swedish, including all form steps, validation messages, and auth flows"
+          ]
+        },
+        {
+          heading: "Mobile",
+          bullets: [
+            "Built and shipped a cross-platform event discovery app (iOS & Android) from scratch, now live on both app stores",
+            "Delivered in-app subscription monetisation (Go.More Premium) with Apple IAP and Google Play Billing, including purchase restoration and paywall-gated features",
+            "Integrated GPS-based location filtering with radius control and interactive map view, consuming the same backend geospatial API",
+            "Implemented full i18n (Swedish/English) across 80+ translation keys and built an end-to-end CI/CD pipeline using EAS Build with tag-triggered automated releases"
+          ]
+        }
+      ]
     },
     {
       title: "Civil Engineer",

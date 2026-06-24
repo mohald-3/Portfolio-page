@@ -13,6 +13,11 @@ export interface Profile {
     company: string;
     period: string;
     description: string;
+    techLine?: string;
+    groups?: {
+      heading: string;
+      bullets: string[];
+    }[];
   }[];
   socials: {
     platform: 'GitHub' | 'LinkedIn' | 'Email' | 'CV';

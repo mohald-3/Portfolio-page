@@ -2,6 +2,48 @@ import { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    slug: "godo",
+    title: "GODO — Event Management Platform",
+    summary: "Full-stack event management platform built from scratch — production REST API, organiser web app, and consumer mobile app, live on App Store and Google Play.",
+    description: "GODO is a complete event management ecosystem built end-to-end: a .NET 10 REST API serving 60+ endpoints, a Next.js organiser web platform, and a React Native mobile app for event discovery — all deployed to production.",
+    thumbnail: "/projects/godo/thumbnail.jpg",
+    gallery: [
+      "/projects/godo/gallery-1.jpg",
+      "/projects/godo/gallery-2.jpg",
+      "/projects/godo/gallery-3.jpg",
+      "/projects/godo/gallery-4.jpg",
+      "/projects/godo/gallery-5.jpg",
+      "/projects/godo/gallery-6.jpg",
+    ],
+    tags: [".NET 10", "Next.js", "React Native", "TypeScript", "PostgreSQL", "EF Core", "CQRS", "Docker", "EAS Build", "GitHub Actions"],
+    highlights: [
+      "Built a production REST API with 60+ endpoints using Clean Architecture, CQRS (MediatR), and 343 automated tests.",
+      "Designed data sync pipelines across 197 Swedish cities using two municipal APIs with AI-assisted event classification.",
+      "Shipped a cross-platform mobile app (iOS & Android) from scratch, now live on both stores.",
+      "Implemented full subscription billing with Apple IAP and Google Play Billing receipt validation.",
+      "Built organiser web platform with multi-step event creation, Cloudinary uploads, and an admin moderation dashboard.",
+      "Set up end-to-end CI/CD: GitHub Actions → Docker → GleSYS VPS (Caddy) for web, EAS Build for mobile."
+    ],
+    architecture: {
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
+      description: "Three-repo architecture: ASP.NET Core backend (Clean Architecture + CQRS), Next.js organiser web app, and React Native / Expo mobile app. PostgreSQL with EF Core, deployed via Docker to a GleSYS VPS behind Caddy, with EAS Build handling mobile CI/CD."
+    },
+    challenges: [
+      {
+        problem: "Syncing and deduplicating events from two external municipal APIs across 197 Swedish cities at scale.",
+        solution: "Built dedicated sync pipeline workers with idempotent upsert logic, AI-assisted category classification, and geospatial fallback handling for events missing GPS coordinates."
+      },
+      {
+        problem: "Implementing cross-platform in-app purchase validation for both Apple and Google with server-side receipt verification.",
+        solution: "Implemented server-side validation against both Apple App Store and Google Play APIs, with renewal tracking, acknowledgment, and paywall-gated feature unlocking on the API side."
+      }
+    ],
+    lessons: [
+      "Designing a single API contract consumed by two very different clients (web and mobile) forces cleaner abstraction boundaries.",
+      "End-to-end ownership across backend, web, and mobile surfaces integration issues early that per-layer ownership would miss."
+    ]
+  },
+  {
     slug: "plugg-kompis",
     title: "PluggKompis",
     summary: "A fullstack collaborative academic platform connecting parents, students, volunteers, and venues to organize free homework help across Sweden.",

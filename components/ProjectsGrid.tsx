@@ -5,7 +5,7 @@ import ProjectCard from './ProjectCard';
 
 const ProjectsGrid: React.FC = () => {
   const [search, setSearch] = useState('');
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -13,14 +13,22 @@ const ProjectsGrid: React.FC = () => {
     return Array.from(tags).sort();
   }, []);
 
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev => {
+      const next = new Set(prev);
+      next.has(tag) ? next.delete(tag) : next.add(tag);
+      return next;
+    });
+  };
+
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
-      const matchesSearch = project.title.toLowerCase().includes(search.toLowerCase()) || 
+      const matchesSearch = project.title.toLowerCase().includes(search.toLowerCase()) ||
                            project.summary.toLowerCase().includes(search.toLowerCase());
-      const matchesTag = !selectedTag || project.tags.includes(selectedTag);
+      const matchesTag = selectedTags.size === 0 || project.tags.some(t => selectedTags.has(t));
       return matchesSearch && matchesTag;
     });
-  }, [search, selectedTag]);
+  }, [search, selectedTags]);
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 border-t border-zinc-200 dark:border-white/5">
@@ -49,9 +57,9 @@ const ProjectsGrid: React.FC = () => {
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mr-2">Filter by Tech:</span>
             <button
-              onClick={() => setSelectedTag(null)}
+              onClick={() => setSelectedTags(new Set())}
               className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all duration-300 ${
-                selectedTag === null
+                selectedTags.size === 0
                   ? 'bg-purple-600 border-purple-500 text-white shadow-lg shadow-purple-900/10'
                   : 'bg-white dark:bg-white/5 border-zinc-200 dark:border-white/10 text-zinc-500 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-white hover:border-purple-200 dark:hover:border-white/20'
               }`}
@@ -61,9 +69,9 @@ const ProjectsGrid: React.FC = () => {
             {allTags.map((tag) => (
               <button
                 key={tag}
-                onClick={() => setSelectedTag(tag)}
+                onClick={() => toggleTag(tag)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all duration-300 ${
-                  selectedTag === tag
+                  selectedTags.has(tag)
                     ? 'bg-purple-600 border-purple-500 text-white shadow-lg shadow-purple-900/10'
                     : 'bg-white dark:bg-white/5 border-zinc-200 dark:border-white/10 text-zinc-500 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-white hover:border-purple-200 dark:hover:border-white/20'
                 }`}
@@ -71,10 +79,10 @@ const ProjectsGrid: React.FC = () => {
                 {tag}
               </button>
             ))}
-            {(selectedTag || search) && (
+            {(selectedTags.size > 0 || search) && (
               <button
                 onClick={() => {
-                  setSelectedTag(null);
+                  setSelectedTags(new Set());
                   setSearch('');
                 }}
                 className="ml-2 p-2 text-zinc-400 hover:text-red-500 transition-colors"
