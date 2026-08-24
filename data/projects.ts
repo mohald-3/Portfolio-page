@@ -2,6 +2,46 @@ import { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    slug: "velolog",
+    title: "VeloLog",
+    summary: "An Android-first cycling app for recording rides and tracking bikes, components, and maintenance without requiring an account or internet connection.",
+    description: "VeloLog is a local-first cycling and maintenance app built with React Native, Expo, TypeScript, and SQLite. It records rides in the background, displays live statistics and routes, updates bike odometers automatically, and keeps maintenance data on the device.",
+    thumbnail: "/projects/velolog/thumbnail.png",
+    gallery: [
+      "/projects/velolog/gallery-1.jpg",
+      "/projects/velolog/gallery-2.jpg",
+      "/projects/velolog/gallery-3.jpg",
+      "/projects/velolog/gallery-4.jpg"
+    ],
+    tags: ["React Native", "Expo", "TypeScript", "SQLite", "MapLibre", "GPS", "i18next"],
+    highlights: [
+      "Built an Android-first, local-first app that works without an account or internet connection.",
+      "Implemented background GPS recording with location filtering and recovery from interruptions.",
+      "Added live ride statistics, automatic odometer updates, and route visualisation with MapLibre.",
+      "Developed component-wear and maintenance tracking with local notifications.",
+      "Added Swedish and English support and a testable domain layer with automated unit tests."
+    ],
+    architecture: {
+      image: "/projects/velolog/thumbnail.png",
+      description: "The app keeps ride, bike, component, and maintenance data locally in SQLite. A testable domain layer handles odometer updates, component wear, and maintenance rules, while the React Native and Expo application handles background location recording, local notifications, and MapLibre route visualisation."
+    },
+    challenges: [
+      {
+        problem: "Recording a ride reliably while the app runs in the background or is interrupted.",
+        solution: "Implemented background GPS recording with location filtering, interruption recovery, and continuous calculation of live ride statistics."
+      },
+      {
+        problem: "Keeping bike and component maintenance information useful without relying on an account or network connection.",
+        solution: "Stored data locally with SQLite and connected completed rides to automatic odometer, component-wear, maintenance, and notification updates."
+      }
+    ],
+    lessons: [
+      "Background location tracking requires explicit handling for interruptions and unreliable GPS samples.",
+      "Keeping the app local-first makes data ownership and offline behaviour simpler for the user, but moves synchronization and consistency concerns onto the device."
+    ],
+    githubUrl: "https://github.com/mohald-3/velolog-app"
+  },
+  {
     slug: "godo",
     title: "GODO: Event Management Platform",
     summary: "An event platform consisting of a production REST API, an organiser web app, and a consumer mobile app published on the App Store and Google Play.",
