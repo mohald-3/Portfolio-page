@@ -3,9 +3,9 @@ import { Project } from '../types';
 export const projects: Project[] = [
   {
     slug: "godo",
-    title: "GODO — Event Management Platform",
-    summary: "Full-stack event management platform built from scratch — production REST API, organiser web app, and consumer mobile app, live on App Store and Google Play.",
-    description: "GODO is a complete event management ecosystem built end-to-end: a .NET 10 REST API serving 60+ endpoints, a Next.js organiser web platform, and a React Native mobile app for event discovery — all deployed to production.",
+    title: "GODO: Event Management Platform",
+    summary: "An event platform consisting of a production REST API, an organiser web app, and a consumer mobile app published on the App Store and Google Play.",
+    description: "GODO is a complete event management ecosystem built end-to-end: a .NET 10 REST API serving 60+ endpoints, a Next.js organiser web platform, and a React Native mobile app for event discovery, all deployed to production.",
     thumbnail: "/projects/godo/thumbnail.jpg",
     gallery: [
       "/projects/godo/gallery-1.jpg",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
   {
     slug: "plugg-kompis",
     title: "PluggKompis",
-    summary: "A fullstack collaborative academic platform connecting parents, students, volunteers, and venues to organize free homework help across Sweden.",
+    summary: "A web platform that connects parents, students, volunteers, and venues to organise free homework support across Sweden.",
 
     description: "PluggKompis is a multi-role web platform designed to facilitate academic support. It features a robust booking system, venue management, and analytics for volunteers tracking their hours.",
     thumbnail: "/projects/plugg-kompis/thumbnail.jpg",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
   {
     slug: "fridge-pal",
     title: "FridgePal",
-    summary: "AI-powered mobile application that reduces food waste by tracking fridge and freezer inventory using image recognition and OCR.",
+    summary: "A hackathon mobile app that uses image recognition and OCR to track fridge and freezer items and their expiration dates.",
     description: "Developed during a hackathon, FridgePal helps users track fridge/freezer inventory. It integrates AI for product identification and expiration date tracking to notify users before food spoils.",
     thumbnail: "/projects/fridge-pal/thumbnail.jpg",
     gallery: [

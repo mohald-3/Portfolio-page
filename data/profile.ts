@@ -3,14 +3,14 @@ import { Profile } from '../types';
 export const profile: Profile = {
   name: "Mohanad Al-Daghestani",
   role: "Fullstack Developer",
-  summary: "Self-motivated .NET Developer with a background in Architectural engineering. I build scalable, testable applications using Clean Architecture, CQRS, and DevOps practices, with hands-on experience in React and TypeScript.",
+  summary: "I'm a full-stack developer with a backend focus and a background in architectural engineering. I mainly work with .NET, and I also build web and mobile applications with React and TypeScript.",
   aboutBullets: [
-    "Transitioned from a successful career in Architectural Engineering to Software Developer, bringing unique problem-solving perspectives.",
-    "Specialized in the .NET ecosystem, implementing Clean Architecture and CQRS patterns with MediatR and EF Core.",
-    "Experienced in building modern, responsive frontends using React 18, TypeScript, and TailwindCSS.",
-    "Strong focus on API design, secure authentication mechanisms (JWT), and thorough documentation using Swagger.",
-    "Committed to DevOps excellence with Azure, Docker, and GitHub Actions CI/CD pipelines.",
-    "Passionate about clean code, SOLID principles, and delivering value-driven engineering solutions."
+    "I moved into software development after working in architectural engineering. That background still shapes how I break down problems and consider how the parts of a system affect each other.",
+    "Most of my backend work is in the .NET ecosystem, using EF Core and patterns such as Clean Architecture and CQRS with MediatR where they fit the problem.",
+    "On the frontend, I work with React, TypeScript, and Tailwind CSS to build responsive web applications.",
+    "I have worked with REST API design, JWT authentication, role-based access, and API documentation with Swagger.",
+    "I use Docker, GitHub Actions, and Azure to automate testing and deployment and keep the path to production repeatable.",
+    "I care about readable code, useful tests, and solutions that can be maintained without adding unnecessary complexity."
   ],
   skills: [
     {
@@ -43,7 +43,7 @@ export const profile: Profile = {
       title: "Full-Stack Developer",
       company: "Go-Do AB",
       period: "Aug 2025 – Jun 2026",
-      description: "Designed and built the complete GODO platform end-to-end — backend API, organiser web app, and consumer mobile app — from initial architecture to production deployment across all three repos.",
+      description: "Designed and built the GODO platform across three repositories: the backend API, organiser web app, and consumer mobile app, from the initial architecture through production deployment.",
       techLine: ".NET 10 · C# · ASP.NET Core · EF Core · PostgreSQL · Next.js · TypeScript · React Native · Expo · Docker · GitHub Actions · EAS Build",
       groups: [
         {
@@ -59,7 +59,7 @@ export const profile: Profile = {
         {
           heading: "Web",
           bullets: [
-            "Built the organiser-facing web platform from scratch — multi-step event creation with complex scheduling modes, Cloudinary image uploads, and a full review/submit flow",
+            "Built the organiser-facing web platform from scratch, including multi-step event creation with complex scheduling modes, Cloudinary image uploads, and a full review and submission flow",
             "Implemented a complete auth system with JWT + refresh token handling via Axios interceptors and TanStack Query for server state",
             "Developed an admin moderation dashboard for reviewing submitted events and an organiser profile page with full CRUD",
             "Localised the entire frontend to Swedish, including all form steps, validation messages, and auth flows"

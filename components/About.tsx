@@ -11,7 +11,7 @@ const About: React.FC = () => {
             <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">About</h2>
             <div className="w-12 h-1 bg-purple-600 rounded-full"></div>
             <p className="mt-6 text-zinc-600 dark:text-zinc-400 text-lg">
-              Serious focus on reliability, performance, and engineering excellence.
+              I prefer practical solutions that remain understandable as a system grows.
             </p>
           </div>
           

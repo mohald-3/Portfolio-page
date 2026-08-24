@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="w-8 h-8 flex items-center justify-center">
             <Logo className="w-full h-full opacity-60 dark:opacity-80" />
           </div>
-          <span className="text-sm font-mono text-zinc-400 dark:text-zinc-500">&copy; {new Date().getFullYear()} Mohanad Al-Daghestani. Engineering Excellence.</span>
+          <span className="text-sm font-mono text-zinc-400 dark:text-zinc-500">&copy; {new Date().getFullYear()} Mohanad Al-Daghestani.</span>
         </div>
       </div>
     </footer>

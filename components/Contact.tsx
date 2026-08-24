@@ -14,12 +14,12 @@ const Contact: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-16">
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">Let's Connect</h2>
+              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">Contact</h2>
               <div className="w-12 h-1 bg-purple-600 rounded-full"></div>
             </div>
             
             <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">
-              Open for technical consultations, backend architectural reviews, or fullstack engineering roles. Let's build something robust.
+              If you would like to discuss a development role, a technical problem, or a project, feel free to get in touch.
             </p>
 
             <div className="flex flex-col gap-4">

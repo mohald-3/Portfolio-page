@@ -6,7 +6,7 @@ const Skills: React.FC = () => {
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 border-t border-zinc-200 dark:border-white/5 bg-zinc-50/50 dark:bg-white/[0.01]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">Technical Proficiency</h2>
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">Technical Skills</h2>
           <div className="w-12 h-1 bg-purple-600 rounded-full"></div>
         </div>
 

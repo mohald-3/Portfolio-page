@@ -1,0 +1,6 @@
+interface:
+  display_name: "Portfolio Writing"
+  short_description: "Humanize Mohanad's portfolio copy"
+  default_prompt: "Use $portfolio-writing to improve the selected portfolio copy while preserving its facts and code structure."
+policy:
+  allow_implicit_invocation: true
