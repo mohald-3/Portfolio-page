@@ -41,13 +41,6 @@ const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10" }) => {
         strokeLinecap="round" 
         strokeLinejoin="round"
       />
-      {/* Detail notch from original logo */}
-      <path 
-        d="M55 65 H70" 
-        stroke="url(#logo-gradient)" 
-        strokeWidth="6" 
-        strokeLinecap="round"
-      />
     </svg>
   );
 };
