@@ -20,7 +20,12 @@ export interface Profile {
     }[];
   }[];
   socials: {
-    platform: 'GitHub' | 'LinkedIn' | 'Email' | 'CV';
+    platform: 'GitHub' | 'LinkedIn' | 'Email';
+    url: string;
+  }[];
+  resumes: {
+    language: 'en' | 'sv';
+    label: string;
     url: string;
   }[];
 }

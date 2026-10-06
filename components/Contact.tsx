@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
               const Icon = social.platform === 'Email' ? Mail :
                            social.platform === 'GitHub' ? Github :
                            social.platform === 'LinkedIn' ? Linkedin : null;
-              if (!Icon || social.platform === 'CV') return null;
+              if (!Icon) return null;
               return (
                 <a
                   key={social.platform}

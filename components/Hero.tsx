@@ -49,27 +49,39 @@ const Hero: React.FC = () => {
             <div className="flex items-center gap-4">
               {profile.socials.map((social) => {
                 const Icon = social.platform === 'GitHub' ? Github : 
-                             social.platform === 'LinkedIn' ? Linkedin : 
-                             social.platform === 'CV' ? FileText : null;
+                             social.platform === 'LinkedIn' ? Linkedin : null;
                 if (!Icon) return null;
-                
-                const isCV = social.platform === 'CV';
                 
                 return (
                   <a
                     key={social.platform}
                     href={social.url}
                     target="_blank"
-                    rel={isCV ? undefined : "noopener noreferrer"}
-                    download={isCV ? "Mohanad_Al-Daghestani_CV.pdf" : undefined}
+                    rel="noopener noreferrer"
                     className="p-4 text-zinc-500 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-white bg-white dark:bg-white/5 hover:bg-zinc-50 dark:hover:bg-white/10 border border-zinc-200 dark:border-white/10 rounded-xl transition-all duration-300 hover:border-purple-500/30"
-                    title={isCV ? "Download Resume" : social.platform}
+                    title={social.platform}
+                    aria-label={social.platform}
                   >
                     <Icon className="w-6 h-6" />
                   </a>
                 );
               })}
             </div>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3" role="group" aria-label="Download CV">
+            <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Download CV:</span>
+            {profile.resumes.map((resume) => (
+              <a
+                key={resume.language}
+                href={resume.url}
+                hrefLang={resume.language}
+                download
+                className="inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl hover:text-purple-600 dark:hover:text-white hover:border-purple-500/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-500 transition-colors"
+              >
+                <FileText className="w-4 h-4" aria-hidden="true" />
+                <span lang={resume.language}>{resume.label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

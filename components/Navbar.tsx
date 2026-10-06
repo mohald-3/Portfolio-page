@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', toggleTheme }) => {
               <Logo className="w-8 h-8" />
             </div>
             <span className="text-sm font-bold tracking-[0.2em] text-zinc-900 dark:text-white transition-colors duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 uppercase font-mono">
-              MOHANAD
+              EDDIE
             </span>
           </Link>
 

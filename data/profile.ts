@@ -1,7 +1,7 @@
 import { Profile } from '../types';
 
 export const profile: Profile = {
-  name: "Mohanad Al-Daghestani",
+  name: "Eddie Lind",
   role: "Fullstack Developer",
   summary: "I'm a full-stack developer with a backend focus and a background in architectural engineering. I mainly work with .NET, and I also build web and mobile applications with React and TypeScript.",
   aboutBullets: [
@@ -97,8 +97,11 @@ export const profile: Profile = {
   ],
   socials: [
     { platform: "GitHub", url: "https://github.com/mohald-3" },
-    { platform: "LinkedIn", url: "https://linkedin.com/in/al-daghestani" },
-    { platform: "Email", url: "mailto:mohanad.aldaghestani@gmail.com" },
-    { platform: "CV", url: "/downloads/Mohanad_Al-Daghestani_CV.pdf" }
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/eddielind/" },
+    { platform: "Email", url: "mailto:m.eddie.lind@gmail.com" }
+  ],
+  resumes: [
+    { language: "sv", label: "Svenska", url: "/downloads/EddieLind_CV_SV.pdf" },
+    { language: "en", label: "English", url: "/downloads/EddieLind_CV_EN.pdf" }
   ]
 };

@@ -8,7 +8,7 @@ import Contact from '../components/Contact';
 
 const Home: React.FC = () => {
   useEffect(() => {
-    document.title = "Mohanad Al-Daghestani | Fullstack Developer Portfolio";
+    document.title = "Eddie Lind | Fullstack Developer Portfolio";
   }, []);
 
   return (

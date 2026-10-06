@@ -7,7 +7,7 @@ import { projects } from '../data/projects';
 const ChatAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: 'user' | 'bot'; text: string }[]>([
-    { role: 'bot', text: "Systems online. I'm Mohanad's technical assistant. How can I help clarify his expertise or project architecture?" }
+    { role: 'bot', text: "Systems online. I'm Eddie's technical assistant. How can I help clarify his expertise or project architecture?" }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ const ChatAssistant: React.FC = () => {
         contents: userMsg,
         config: {
           systemInstruction: `
-            You are a highly professional, direct, and serious Technical Assistant for Mohanad's developer portfolio.
+            You are a highly professional, direct, and serious Technical Assistant for Eddie's developer portfolio.
             Your goal is to answer recruiter or collaborator questions based on the provided knowledge base.
             
             KNOWLEDGE_BASE:
@@ -61,7 +61,7 @@ const ChatAssistant: React.FC = () => {
             RULES:
             1. Be concise. Avoid fluff. Use technical terminology.
             2. If asked about contact info, refer them to the LinkedIn or Email in the portfolio.
-            3. If a question is outside Mohanad's professional scope, politely decline and steer back to his work.
+            3. If a question is outside Eddie's professional scope, politely decline and steer back to his work.
             4. Format short bullet points for lists.
             5. Do not hallucinate skills or projects not listed.
           `

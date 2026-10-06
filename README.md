@@ -1,4 +1,6 @@
-# Mohanned | Senior Backend Engineer Portfolio
+# Eddie Lind | Senior Backend Engineer Portfolio
+
+Portfolio: https://eddies-portfolio.vercel.app/
 
 A dark, modern, and serious developer portfolio built with **React**, **TypeScript**, and **Tailwind CSS**. Designed with a "Content-as-Code" philosophy, allowing for easy updates without touching UI components.
 
